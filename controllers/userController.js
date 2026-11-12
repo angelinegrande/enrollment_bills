@@ -24,5 +24,28 @@ exports.updateUser=(req,res)=>{
             res.json({message:'Course program updated successfully'});
         else
             res.status(404).json({message:'Id not found'});
+
+        exports.deleteUser=(req,res)=>{
+
+    const ids=req.body.ids;
+
+    connection.query('DELETE FROM enrollment_bills WHERE id=?',[ids],(err,result)=>{
+
+        if(err) throw err;
+
+        if(result.affectedRows>0)
+
+            res.json({message:'User deleted successfully'});
+
+        else
+
+            res.status(404).json({message:'User not found'});
+
+    });
+
+
+
+}
+
 });
 }
