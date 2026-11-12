@@ -9,7 +9,7 @@ exports.getAllUsers = (req, res) => {
 
 exports.createUser=(req,res)=>{
     const {student,name, course, units, tuition}=req.body;
-    tuition=0;
+   
     connection.query('INSERT INTO enrollment_bills (student_id, student_name,course_program, units_enrolled, tuition_total) VALUES (?,?,?,?,?)',[student,name, course, units, tuition],(err,result)=>{
         if(err) throw err;
         res.status(201).json({message:'Enrollement assessment created successfully',id:result.insertId});
